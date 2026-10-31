@@ -1,0 +1,6 @@
+/about_us /about 301
+/water_tank /water-tanks 301
+/water_tank_simple /water-tanks?line=simple 301
+/water_tank_standard /water-tanks?line=standard 301
+/bottle /bottles 301
+/* /index.html 200

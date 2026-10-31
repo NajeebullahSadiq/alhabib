@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-navy: #101433;
+  --color-navy-soft: #1b2148;
+  --color-brand: #3e4095;
+  --color-brand-deep: #2d2f78;
+  --color-aqua: #1493b8;
+  --color-mist: #e7eef6;
+  --color-paper: #f4f7fb;
+  --color-ink: #142033;
+  --color-muted: #4e5d6c;
+  --color-line: #d5e0ea;
+  --color-amber: #f5a524;
+  --color-amber-ink: #1c1406;
+  --color-night: #070b16;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+@keyframes drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: drift 32s linear infinite;
+}
+
+@font-face {
+  font-family: "Bahij Zar";
+  src: url("/fonts/BahijZar-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bahij Zar";
+  src: url("/fonts/BahijZar-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-bahij {
+  font-family: "Bahij Zar", "Segoe UI", Tahoma, sans-serif;
+}
+
+html[dir="rtl"] {
+  --font-sans: "Bahij Zar", "Segoe UI", Tahoma, sans-serif;
+  --font-display: "Bahij Zar", "Segoe UI", Tahoma, sans-serif;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+html[dir="rtl"] body,
+html[dir="rtl"] button,
+html[dir="rtl"] input,
+html[dir="rtl"] select,
+html[dir="rtl"] textarea {
+  font-family: "Bahij Zar", "Segoe UI", Tahoma, sans-serif;
+}
+
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3 {
+  line-height: 1.45;
+}
+
+html[dir="rtl"] * {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+html[dir="rtl"] .marquee-track {
+  animation-direction: reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+}
+
+.hero-scrim {
+  background: linear-gradient(
+    90deg,
+    #070b16 0%,
+    rgba(7, 11, 22, 0.94) 34%,
+    rgba(7, 11, 22, 0.72) 48%,
+    rgba(7, 11, 22, 0.18) 64%,
+    transparent 100%
+  );
+}
+
+html[dir="rtl"] .hero-scrim {
+  background: linear-gradient(
+    270deg,
+    #070b16 0%,
+    rgba(7, 11, 22, 0.94) 34%,
+    rgba(7, 11, 22, 0.72) 48%,
+    rgba(7, 11, 22, 0.18) 64%,
+    transparent 100%
+  );
+}
+
+.night-grain {
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  opacity: 0.14;
+  mix-blend-mode: overlay;
+}
+
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+
+.ken-burns {
+  animation: ken-burns 22s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.film-still-wrap {
+  perspective: 980px;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(20, 147, 184, 0.18), transparent 46%),
+    linear-gradient(165deg, #1b2148, #070b16 72%);
+}
+
+.film-still {
+  position: relative;
+  display: grid;
+  transform: rotateY(-7deg) rotateX(4deg) scale(0.93);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  background: #f4f7fb;
+}
+
+html[dir="rtl"] .film-still {
+  transform: rotateY(7deg) rotateX(4deg) scale(0.93);
+}
+
+.film-card {
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+}
+
+.film-card:hover,
+.film-card:focus-within {
+  transform: translateY(-4px);
+  border-color: #1493b8;
+}
+
+.film-card:hover .film-still,
+.film-card:focus-within .film-still {
+  transform: rotateY(-2.5deg) rotateX(1.5deg) translateY(-6px) scale(0.97);
+}
+
+html[dir="rtl"] .film-card:hover .film-still,
+html[dir="rtl"] .film-card:focus-within .film-still {
+  transform: rotateY(2.5deg) rotateX(1.5deg) translateY(-6px) scale(0.97);
+}
+
+.film-sweep {
+  position: absolute;
+  inset: -45%;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 42%, rgba(255, 255, 255, 0.55) 50%, transparent 58%);
+  mix-blend-mode: soft-light;
+  animation: film-sweep 7.5s ease-in-out infinite;
+}
+
+@keyframes film-sweep {
+  0%, 58% { transform: translateX(-70%) rotate(8deg); }
+  82%, 100% { transform: translateX(70%) rotate(8deg); }
+}
+
+html[dir="rtl"] .film-sweep {
+  animation-name: film-sweep-rtl;
+}
+
+@keyframes film-sweep-rtl {
+  0%, 58% { transform: translateX(70%) rotate(-8deg); }
+  82%, 100% { transform: translateX(-70%) rotate(-8deg); }
+}
+
+.film-progress {
+  height: 100%;
+  width: 100%;
+  background: #1493b8;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+html[dir="rtl"] .film-progress {
+  transform-origin: right;
+}
+
+.cinema-rail {
+  scrollbar-color: rgba(20, 147, 184, 0.85) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ken-burns { animation: none; }
+  .film-sweep { display: none; }
+  .film-card,
+  .film-card:hover,
+  .film-card:focus-within,
+  .film-still,
+  html[dir="rtl"] .film-still,
+  .film-card:hover .film-still,
+  .film-card:focus-within .film-still,
+  html[dir="rtl"] .film-card:hover .film-still,
+  html[dir="rtl"] .film-card:focus-within .film-still {
+    transform: none;
+    transition: none;
+  }
+}

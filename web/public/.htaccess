@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteRule ^about_us/?$ /about [R=301,L]
+RewriteRule ^water_tank/?$ /water-tanks [R=301,L]
+RewriteRule ^water_tank_simple/?$ /water-tanks?line=simple [R=301,L]
+RewriteRule ^water_tank_standard/?$ /water-tanks?line=standard [R=301,L]
+RewriteRule ^bottle/?$ /bottles [R=301,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]

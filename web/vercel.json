@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    { "source": "/about_us", "destination": "/about", "permanent": true },
+    { "source": "/water_tank", "destination": "/water-tanks", "permanent": true },
+    { "source": "/water_tank_simple", "destination": "/water-tanks?line=simple", "permanent": true },
+    { "source": "/water_tank_standard", "destination": "/water-tanks?line=standard", "permanent": true },
+    { "source": "/bottle", "destination": "/bottles", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
